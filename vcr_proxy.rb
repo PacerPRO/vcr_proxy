@@ -3,7 +3,7 @@ require 'webrick'
 require 'webrick/https'
 require 'webrick/httpproxy'
 require 'vcr'
-require 'debugger'
+#require 'debugger'
 
 # enable modifications to unparsed_uri
 class WEBrick::HTTPRequest

@@ -18,5 +18,7 @@ _yardoc
 doc/
 .DS_Store
 .rvmrc
+.ruby-gemset
+.ruby-version
 old
 cassettes
