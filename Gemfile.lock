@@ -1,14 +1,18 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.8)
-    crack (0.4.2)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
+    crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    hashdiff (0.3.1)
+    public_suffix (2.0.4)
     safe_yaml (1.0.4)
-    vcr (2.9.3)
-    webmock (1.21.0)
+    vcr (3.0.3)
+    webmock (2.1.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
@@ -16,3 +20,6 @@ PLATFORMS
 DEPENDENCIES
   vcr!
   webmock!
+
+BUNDLED WITH
+   1.13.6
