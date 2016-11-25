@@ -67,7 +67,12 @@ class VCRProxy < WEBrick::HTTPProxyServer
       res.status = remote_response.code
 
       remote_response.header.each do |k|
-        res.header[k] = remote_response.header[k]
+        # next if k == 'content-length' # if content-length is invalid then the response gets truncated. We dont want that, even if it is probably an error in the SUT..
+        res.header[k] = if k == 'content-length'
+                          res.body.length
+                        else
+                          remote_response.header[k]
+                        end
       end
     end
 
