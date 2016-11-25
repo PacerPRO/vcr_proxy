@@ -100,9 +100,7 @@ class VCRProxy < WEBrick::HTTPProxyServer
   end
 
   def service(req, res)
-    VCR.use_cassette("records") do
-      super(req, res)
-    end
+    super(req, res)
   end
 end
 
@@ -112,8 +110,14 @@ VCR.configure do |c|
   c.default_cassette_options = { :record => :new_episodes }
   c.ignore_localhost = true
   c.ignore_hosts "127.0.0.1"
+  # c.debug_logger = $stderr
 end
 
 server = VCRProxy.new(:Port => 9999)
 trap("INT"){ server.shutdown }
-server.start
+
+raise 'Please specify a cassette name.' if ARGV.length < 1
+
+VCR.use_cassette(ARGV[0]) do
+  server.start
+end
